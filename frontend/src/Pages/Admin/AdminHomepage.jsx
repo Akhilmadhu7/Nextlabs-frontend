@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
+import AdminHome from '../../Components/Admin/AdminHome';
 import Header from '../../Components/Admin/Header'
-import AuthContext from '../../Context/Admin/AuthContext'
+import AuthContext from '../../Context/AuthContext'
 
 function AdminHomepage() {
     let {admin} = useContext(AuthContext)
@@ -11,10 +12,10 @@ function AdminHomepage() {
         <div>
             <Header></Header>
         </div>
-        This is Admin Home Page
-        {admin && 
-        <p>hello {admin.username}</p>
-        }
+        <div>
+          <AdminHome></AdminHome>
+        </div>
+        
         </div>
   )
 }

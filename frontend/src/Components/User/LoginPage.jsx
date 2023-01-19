@@ -1,10 +1,11 @@
 import React, {useContext, useState} from "react";
 import AuthContext from "../../Context/AuthContext";
 import {useForm} from 'react-hook-form'
+import { Link } from "react-router-dom";
 
 function LoginPage() {
 
-    let {loginAdmin }= useContext(AuthContext)
+    let {loginUser }= useContext(AuthContext)
 
     const {
         register,
@@ -24,6 +25,7 @@ function LoginPage() {
             [e.target.name]:e.target.value
         })
     }
+
   return (
     <div>
       <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
@@ -31,10 +33,12 @@ function LoginPage() {
           <h1 className="text-3xl font-semibold text-center text-purple-700 underline">
             Sign in
           </h1>
-          <form onSubmit={loginAdmin} className="mt-6">
+          <form  
+          onSubmit={loginUser} 
+          className="mt-6">
             <div className="mb-2">
               <label
-                for="email"
+                for="text"
                 className="block text-sm font-semibold text-gray-800"
               >
                 Username
@@ -89,9 +93,9 @@ function LoginPage() {
           <p className="mt-8 text-xs font-light text-center text-gray-700">
             {" "}
             Don't have an account?{" "}
-            <a href="#" className="font-medium text-purple-600 hover:underline">
+            <Link to='/signup' className="font-medium text-purple-600 hover:underline">
               Sign up
-            </a>
+            </Link>
           </p>
         </div>
       </div>
