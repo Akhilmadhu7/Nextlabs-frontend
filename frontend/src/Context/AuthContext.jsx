@@ -74,7 +74,7 @@ export const AuthProvider = ({children}) =>{
     let loginAdmin = async(e) =>{
         console.log('works well');
         e.preventDefault()
-        let response = await fetch('http://127.0.0.1:8000/api/token/',{
+        let response = await fetch('http://127.0.0.1:8000/api/admin/token/',{
             method:'POST', 
             headers:{
                 'Content-Type':'application/JSON'
@@ -120,7 +120,7 @@ export const AuthProvider = ({children}) =>{
     //update token to get new access token before it expires
     let updateToken = async ()=>{
         console.log('update token called');
-        let response = await fetch('http://127.0.0.1:8000/api/token/refresh/',{
+        let response = await fetch('http://127.0.0.1:8000/api/admin/token/refresh/',{
             method:'POST',
             headers:{
                 'Content-Type':'application/JSON'
@@ -147,6 +147,36 @@ export const AuthProvider = ({children}) =>{
         // }
     }
 
+    //function to update user token
+    let updateUserToken = async ()=>{
+        console.log('update token called');
+        let response = await fetch('http://127.0.0.1:8000/api/token/refresh/',{
+            method:'POST',
+            headers:{
+                'Content-Type':'application/JSON'
+            },
+            body:JSON.stringify({'refresh':userAuthTokens?.refresh})
+        })
+
+        let data = await response.json()
+
+        if (response.status === 200) {
+            console.log('updated ');
+            setUserAuthTokens(data)
+            setUser(jwt_decode(data.access))
+            localStorage.setItem('userAuthTokens',JSON.stringify(data))
+            
+        } else {
+            console.log('not updated');
+            loginUser()
+            
+        }
+
+        // if (loading) {
+        //     setLoading(false)
+        // }
+    }
+
     //fucntion to call the update token every 4 minutes
     useEffect(()=>{
 
@@ -154,7 +184,7 @@ export const AuthProvider = ({children}) =>{
         //     updateToken()
         // }
         console.log('interval time aageya');
-        let fourMinutes = 1000 * 60 * 1
+        let fourMinutes = 1000 * 60 * 4
         let interval = setInterval(()=>{
             if (authTokens) {
                 console.log('here it is');
@@ -162,13 +192,13 @@ export const AuthProvider = ({children}) =>{
             }
             if (userAuthTokens) {
                 console.log('it also works');
-                updateToken()
+                updateUserToken()
             }
         }, fourMinutes)
 
         return ()=> clearInterval(interval)
 
-    }, [authTokens])
+    }, [authTokens,userAuthTokens])
 
 
     let contextData = {

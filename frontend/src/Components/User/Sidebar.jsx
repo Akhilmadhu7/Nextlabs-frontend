@@ -2,15 +2,19 @@ import React, {useState, useEffect, useContext} from 'react'
 import {BrowserRouter as Router, NavLink,Route,Routes} from 'react-router-dom'
 
 import {FaTh, FaBars, FaUser} from 'react-icons/fa'
+import {IoMdLogOut } from "react-icons/io";
 import { ImPlus } from "react-icons/im";
 
 // import './Styles/Sidebar.css'
 import './Styles/Sidebar.css'
+import AuthContext from '../../Context/AuthContext';
 
 function Sidebar(children) {
 
     const [isOpen, setIsOpen] = useState(true)
     const toggle = ()=> setIsOpen(!isOpen)
+
+    let {logoutUser} = useContext(AuthContext)
 
     const menuItem = [
         {
@@ -30,6 +34,13 @@ function Sidebar(children) {
             name:'Add apps',
             icon:<ImPlus/>
         },
+
+        {
+          path:{logoutUser},
+          name:'Logout',
+          icon:<IoMdLogOut className='rotate-[270deg]'/>
+      },  
+
 
         
     ]
