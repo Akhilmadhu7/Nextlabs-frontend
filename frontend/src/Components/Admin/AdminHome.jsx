@@ -14,7 +14,7 @@ function AdminHome() {
 
   },[])
   
-
+  //to get and list all the apps
   const listApplications = ()=>{
 
     try {
@@ -38,7 +38,7 @@ function AdminHome() {
   }
 
  
-
+  //for deleting an app
   const deleteApp = (id)=>{
 
     Swal.fire({
@@ -116,36 +116,35 @@ function AdminHome() {
                   <tr class="bg-gray-300 border border-grey-500 md:border-none block md:table-row">
                     <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
                       <span class="inline-block w-1/3 md:hidden font-bold">
-                        Name
+                        Sl.NO
                       </span>
                       {index+1}
                     </td>
                     <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
                       <span class="inline-block w-1/3 md:hidden font-bold">
-                        User Name
+                        App Name
                       </span>
                       {apps.app_name}
                     </td>
                     <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
                       <span class="inline-block w-1/3 md:hidden font-bold">
-                        User Name
+                      Creator Name
                       </span>
                       {apps.created_user}
                     </td>
                     <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
                       <span class="inline-block w-1/3 md:hidden font-bold">
-                        Email Address
+                      Image
                       </span>
                       <img
                         src={apps.app_image}
-                        // src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
                         className="rounded-full w-8 sm:w-16  m-2 "
                         alt="Avatar"
                       />
                     </td>
                     <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
                       <span class="inline-block w-1/3 md:hidden font-bold">
-                        Mobile
+                      Points
                       </span>
                       {apps.app_points}
                     </td>

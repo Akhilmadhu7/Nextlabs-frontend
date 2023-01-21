@@ -6,7 +6,9 @@ import { AuthProvider } from './Context/AuthContext';
 import AddAppPage from './Pages/Admin/AddAppPage';
 import AdminHomepage from './Pages/Admin/AdminHomepage';
 import AdminLoginPage from './Pages/Admin/AdminLoginPage';
+import ProfilePage from './Pages/User/ProfilePage';
 import SignupPage from './Pages/User/SignupPage';
+import TaskPage from './Pages/User/TaskPage';
 import UserHomePage from './Pages/User/UserHomePage';
 import UserLoginPage from './Pages/User/UserLoginPage';
 import AdminPrivateRoute from './Utils/Admin/AdminPrivateRoute';
@@ -31,6 +33,8 @@ function App() {
             <Route element={<UserPrivateRoutes/>} >
               <Route element={<UserLayout></UserLayout>} path='/user/' >
                 <Route element={<UserHomePage/>} path='/user/home' />
+                <Route element={<ProfilePage/>} path='/user/profile'/>
+                <Route element={<TaskPage/>} path='/user/task' />
               </Route>
             </Route>  
           </Routes>

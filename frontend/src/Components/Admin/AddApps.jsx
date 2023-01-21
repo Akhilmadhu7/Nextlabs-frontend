@@ -8,6 +8,7 @@ import Axios from "axios";
 function AddApps() {
   let { baseUrl, authTokens,admin } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [imgError,setImgError] = useState('')
   //for validation
   const {
     register,
@@ -51,6 +52,9 @@ function AddApps() {
   const uploadApplication = () => {
     console.log("upload fucntion", appData);
     console.log("here is baseUrl", baseUrl);
+    if (appData.app_image === '') {
+      setImgError('Image required')
+    }else{
     try {
       Axios.post(baseUrl + "accounts/add-app", appData, {
         headers: {
@@ -63,11 +67,16 @@ function AddApps() {
           navigate("/admin/home");
         })
         .catch((err) => {
-          console.log("here is then error");
+          if (err) {
+            
+            console.log("here is then error",err.data);
+          }
+          console.log("here is then error",err.data);
         });
     } catch (error) {
       console.log("ehre is catch error", error);
     }
+  }
   };
 
   return (
@@ -85,7 +94,7 @@ function AddApps() {
               <form onSubmit={handleSubmit(uploadApplication)}>
                 <div className="">
                   <div className="py-2">
-                    <AddImage getImage={getImage}></AddImage>
+                    <AddImage getImage={getImage} imgError={imgError}></AddImage>
                   </div>
                   <div></div>
                 </div>
