@@ -34,7 +34,7 @@ function Task() {
           <div className="   p-3 m-autorounded-md  mb-3 ">
             <div className="">
               <h1 className="text-indigo-700  text-center text-3xl font-semibold underline uppercase decoration-wavy">
-                Over View
+                Task
               </h1>
             </div>
           </div>

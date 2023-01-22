@@ -73,7 +73,7 @@ function Signup() {
                         </h3>
                     </a>
                 </div>
-                <div className="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-lg sm:rounded-lg">
+                <div className="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md ring-2 ring-violet-600 sm:max-w-lg sm:rounded-lg">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div>
                             <label
@@ -171,7 +171,7 @@ function Signup() {
                             <div className="flex flex-col items-start">
                                 <input
                                     {...register("password2", {
-                                        required: "Password required",
+                                        required: "Confirm Password required",
                                         pattern: {
                                           value: /^[a-zA-Z0-9]{8}[0-9]*[A-Za-z]*$/,
                                           message: "Password should be strong"
@@ -197,12 +197,7 @@ function Signup() {
                                 )}
                             </div>
                         </div>
-                        <a
-                            href="#"
-                            className="text-xs text-purple-600 hover:underline"
-                        >
-                            Forget Password?
-                        </a>
+                        
                         <div className="flex items-center mt-4">
                             <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
                                 Register

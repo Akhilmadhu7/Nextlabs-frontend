@@ -25,6 +25,13 @@ function AddImage({ getImage,imgError }) {
     getImage(e.target.files[0]) //passing the image file to add app component
   };
 
+  //remove image
+  const removeImage = ()=>{
+    setImgPreview({
+      app_image:''
+    })
+  }
+
   return (
     <div>
       <div className="flex justify-center mt-8">
@@ -70,12 +77,10 @@ function AddImage({ getImage,imgError }) {
             </div>
           </div>
           <div className="flex p-2 space-x-4">
-            {/* <button className="px-4 py-2 text-white bg-red-500 rounded shadow-xl">
+            <button onClick={removeImage} className="px-4 py-2 text-white bg-red-500 rounded shadow-xl">
               Cannel
             </button>
-            <button  className="px-4 py-2 text-white bg-green-500 rounded shadow-xl">
-              Upload
-            </button> */}
+            
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react'
 import {BrowserRouter as Router, NavLink,Route,Routes} from 'react-router-dom'
 
-import {FaTh, FaBars, FaUser} from 'react-icons/fa'
+import {FaTh, FaBars, FaUser, FaDatabase} from 'react-icons/fa'
 import { MdOutlineTask } from "react-icons/md";
 import {IoMdLogOut } from "react-icons/io";
 import { ImPlus } from "react-icons/im";
@@ -28,19 +28,19 @@ function Sidebar(children) {
           path:'/user/profile',
           name:'Profile',
           icon:<FaUser/>
-      },
+       },
+
+       {
+          path:'/user/points',
+          name:'Points',
+          icon:<FaDatabase/>
+        },
 
         {
             path:'/user/task',
             name:'Task',
             icon:<MdOutlineTask/>
         },
-
-        {
-          path:{logoutUser},
-          name:'Logout',
-          icon:<IoMdLogOut className='rotate-[270deg]'/>
-      },  
 
 
         

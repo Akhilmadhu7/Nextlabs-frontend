@@ -1,34 +1,36 @@
-import React,{useEffect, useContext, useState} from "react";
+import React, { useEffect, useContext, useState } from "react";
 import Axios from "axios";
 import AuthContext from "../../Context/AuthContext";
 
 function Profile() {
+  let { userAuthTokens, user, baseUrl } = useContext(AuthContext);
+  const [userData, setUserData] = useState([]);
 
-    let {userAuthTokens, user, baseUrl} = useContext(AuthContext)
-    const [userData, setUserData] = useState([])
-
-    useEffect(()=>{
-        try {
-            Axios.get(baseUrl+'accounts/user-profile',{
-                headers:{
-                    Authorization:`Bearer ${userAuthTokens.access}`,
-                    
-                }
-            }).then((res)=>{
-                console.log('here is data ',res.data.Response);
-                setUserData(res.data.Response)
-            }).catch((res)=>{
-                console.log('here is catch',res);
-            })
-        } catch (error) {
-            console.log('her is next catch');
-        }
-    },[])
+  useEffect(() => {
+    try {
+      Axios.get(baseUrl + "accounts/user-profile", {
+        headers: {
+          Authorization: `Bearer ${userAuthTokens.access}`,
+        },
+      })
+        .then((res) => {
+          console.log("here is data ", res.data.Response);
+          setUserData(res.data.Response);
+        })
+        .catch((res) => {
+          console.log("here is catch", res);
+        });
+    } catch (error) {
+      console.log("her is next catch");
+    }
+  }, []);
   return (
     <div className="bg-slate-300 mb-3">
       <div className="mt-6 grid-rows-2">
         <div>
-          <h2 className="text-3xl text-indigo-600">Profile</h2>
+          <h2 className="text-indigo-700  text-center text-3xl font-semibold underline uppercase decoration-wavy">
+            Profile
+          </h2>
         </div>
       </div>
 
@@ -49,15 +51,12 @@ function Profile() {
               ></path>
             </svg>
             <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
-             {userData.username}
+              {userData.username}
             </h5>
-            
+
             <div class="flex mt-4 space-x-3 md:mt-6">
-                <p className="text-gray-500">Email :</p>
-                <h3>
-                    {userData.email}
-                </h3>
-              
+              <p className="text-gray-500">Email :</p>
+              <h3>{userData.email}</h3>
             </div>
           </div>
         </div>

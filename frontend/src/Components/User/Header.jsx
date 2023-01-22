@@ -18,7 +18,7 @@ function Header() {
 
           <button
             onClick={logoutUser}
-            className=" w-full px-2 py-1 tracking-wide bg-slate-200 font-medium transition-colors duration-200 transform bg-white-700 rounded-md hover:bg-violet-50 hover:text-red-600 focus:outline-none "
+            className=" w-full px-2 py-1 tracking-wide text-indigo-600 bg-white font-medium transition-colors duration-200 transform bg-white-700 rounded-md hover:bg-violet-50 hover:text-red-600 focus:outline-none "
           >
             Logout
           </button>

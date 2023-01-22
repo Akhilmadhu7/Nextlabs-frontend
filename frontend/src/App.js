@@ -6,6 +6,7 @@ import { AuthProvider } from './Context/AuthContext';
 import AddAppPage from './Pages/Admin/AddAppPage';
 import AdminHomepage from './Pages/Admin/AdminHomepage';
 import AdminLoginPage from './Pages/Admin/AdminLoginPage';
+import PointsPage from './Pages/User/PointsPage';
 import ProfilePage from './Pages/User/ProfilePage';
 import SignupPage from './Pages/User/SignupPage';
 import TaskPage from './Pages/User/TaskPage';
@@ -34,6 +35,7 @@ function App() {
               <Route element={<UserLayout></UserLayout>} path='/user/' >
                 <Route element={<UserHomePage/>} path='/user/home' />
                 <Route element={<ProfilePage/>} path='/user/profile'/>
+                <Route element={<PointsPage/>} path='/user/points' />
                 <Route element={<TaskPage/>} path='/user/task' />
               </Route>
             </Route>  
