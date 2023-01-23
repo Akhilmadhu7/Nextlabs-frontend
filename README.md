@@ -1,6 +1,7 @@
-# Nextlabs-frontend
+
+
+# NextLabs assessment
 <br/>
-<p>NextLabs assessment</p>
 
 # Project fucntionalities
 
